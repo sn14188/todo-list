@@ -55,7 +55,7 @@ const ItemPage = () => {
   };
 
   const handleImageUpload = async (file: File) => {
-    const filename = file.name;
+    const filename = file.name.split(".")[0];
     const isValidName = /^[a-zA-Z]+$/.test(filename);
 
     if (!isValidName) {
