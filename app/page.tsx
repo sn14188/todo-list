@@ -75,7 +75,7 @@ export default function Home() {
             }
           }}
         />
-        <button className="button add" onClick={handleAddItem}>
+        <button className="button add" type="button" onClick={handleAddItem}>
           <svg
             width="16"
             height="16"
