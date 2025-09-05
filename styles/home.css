@@ -107,7 +107,7 @@
   display: inline;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600) {
   .add-button-text {
     display: none;
   }
