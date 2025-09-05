@@ -1,26 +1,62 @@
-@import "tailwindcss";
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css");
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --violet-600: #7c3aed;
+  --violet-100: #ede9fe;
+  --rose-500: #f43f5e;
+  --lime-300: #bef264;
+  --amber-800: #92400e;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  color: var(--slate-900);
+  font-family: "NanumSquare";
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  max-width: 1000px;
+  min-width: 360px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gnb {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.gnb-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.content {
+  margin-top: 24px;
+  background-color: white;
 }
