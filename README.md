@@ -1,8 +1,10 @@
 ## DO IT
-할 일 관리와 이미지 업로드, 메모 기능을 지원하는 반응형 기반의 웹 애플리케이션입니다 [[실행](https://todo-list-eight-bay-28.vercel.app/)]
+A responsive web application for task management, image uploads, and memo creation.<br>
+This project is built with **Next.js** and is connected to an existing backend. [[Run](https://todo-list-eight-bay-28.vercel.app/)]
 
-주요 기능
-- **할 일 관리**: 할 일 생성, 내용 수정, 진행 중/완료 토글 및 삭제
-- **이미지 업로드**: 관련 이미지를 업로드해 시각적 기록 가능
-- **메모 작성**: 각 아이템에 메모를 추가하고 저장할 수 있음
-- **반응형 UI**: 다양한 화면 크기에서 responsive 레이아웃 제공
+### Key Features
+- **Task Management:** Create tasks, edit content, toggle between to-do/completed, and delete tasks.
+- **Image Upload:** Upload related images for better visual tracking.
+- **Memo Writing:** Add and save notes for each item.
+- **Responsive UI:** Layout automatically adapts to different screen sizes.
+- **Backend Integration:** Connected to a pre-implemented backend for data persistence.
