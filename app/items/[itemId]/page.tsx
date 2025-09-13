@@ -65,7 +65,7 @@ const ItemPage = () => {
 
     const max_size = 2 * 1024 * 1024;
     if (file.size > max_size) {
-      alert("The image size must be 2MB or less.");
+      alert("The image size must be 2MB or less!");
       return;
     }
 
@@ -77,11 +77,11 @@ const ItemPage = () => {
       body: formData,
     });
 
-    if (res.ok) {
-      console.log("file uploaded successfully");
-    } else {
-      console.error("error uploading file");
-    }
+    // if (res.ok) {
+    //   console.log("file uploaded successfully");
+    // } else {
+    //   console.error("error uploading file");
+    // }
 
     const data = await res.json();
     setImageUrl(data.url);
