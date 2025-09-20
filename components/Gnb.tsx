@@ -4,7 +4,10 @@ import "../app/globals.css";
 
 const Gnb = () => {
   return (
-    <header className="gnb">
+    <header
+      className="flex h-[60px] w-full items-center border-b bg-white"
+      style={{ borderColor: "var(--slate-200)" }}
+    >
       <Link href="/" className="gnb-logo">
         <picture>
           <source media="(max-width: 600px)" srcSet="/logo-small.png" />
