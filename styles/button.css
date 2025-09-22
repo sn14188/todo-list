@@ -8,7 +8,7 @@
   min-height: 56px;
   border-radius: 24px;
 
-  font-size: 18px;
+  /* font-size: 18px; */
   background-color: var(--slate-200);
   box-shadow: 0 4px 0 black;
   cursor: pointer;
