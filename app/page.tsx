@@ -4,60 +4,45 @@ import type { Item } from "@/types/item";
 import CheckList from "@/components/CheckList";
 import "@/styles/home.css";
 import "@/styles/button.css";
-
-const api = process.env.NEXT_PUBLIC_API;
-const tenantId = process.env.NEXT_PUBLIC_TENANT_ID!;
+import { addItem, fetchItems, toggleComplete } from "@/utils/api";
 
 export default function Home() {
   const [input, setInput] = useState("");
   const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
-    fetch(`${api}/${tenantId}/items`)
-      .then((res) => res.json())
-      .then((data) => setItems(data));
+    fetchItems().then((data) => setItems(data));
   }, []);
 
   const handleAddItem = async () => {
     const name = input.trim();
     if (!name) return;
 
-    const res = await fetch(`${api}/${tenantId}/items`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name }),
-    });
-
-    const newItem: Item = await res.json();
+    const newItem = await addItem({ name });
     setItems((prev) => [newItem, ...prev]);
     setInput("");
   };
 
   const toggleItem = async (id: number) => {
-    const target = items.find((it) => it.id === id);
+    const target = items.find((item) => item.id === id);
     if (!target) return;
+
     const next = !target.isCompleted;
 
+    // update ui first
     setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, isCompleted: next } : it)),
+      prev.map((item) =>
+        item.id === id ? { ...item, isCompleted: next } : item,
+      ),
     );
 
-    const res = await fetch(`${api}/${tenantId}/items/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isCompleted: next }),
-    });
-
-    if (res.ok) {
-      const updated: Item = await res.json();
-      setItems((prev) =>
-        prev.map((it) =>
-          it.id === id ? { ...it, isCompleted: updated.isCompleted } : it,
-        ),
-      );
-    } else {
-      console.error("toggle failed", res.status);
-    }
+    // update server
+    const updated = await toggleComplete(id, { isCompleted: next });
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, isCompleted: updated.isCompleted } : item,
+      ),
+    );
   };
 
   return (
