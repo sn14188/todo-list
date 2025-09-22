@@ -39,7 +39,7 @@ export default function Home() {
     const next = !target.isCompleted;
 
     setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, isCompleted: next } : it))
+      prev.map((it) => (it.id === id ? { ...it, isCompleted: next } : it)),
     );
 
     const res = await fetch(`${api}/${tenantId}/items/${id}`, {
@@ -52,8 +52,8 @@ export default function Home() {
       const updated: Item = await res.json();
       setItems((prev) =>
         prev.map((it) =>
-          it.id === id ? { ...it, isCompleted: updated.isCompleted } : it
-        )
+          it.id === id ? { ...it, isCompleted: updated.isCompleted } : it,
+        ),
       );
     } else {
       console.error("toggle failed", res.status);
