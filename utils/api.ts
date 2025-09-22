@@ -5,6 +5,9 @@ const tenantId = process.env.NEXT_PUBLIC_TENANT_ID!;
 
 const fetchItems = async (): Promise<Item[]> => {
   const res = await fetch(`${api}/${tenantId}/items`);
+
+  if (!res.ok) throw new Error("failed to fetch items");
+
   return res.json();
 };
 
@@ -15,7 +18,7 @@ const addItem = async (dto: CreateItemDto): Promise<Item> => {
     body: JSON.stringify(dto),
   });
 
-  if (!res.ok) throw new Error("failed to add the item");
+  if (!res.ok) throw new Error("failed to add item");
 
   return res.json();
 };
