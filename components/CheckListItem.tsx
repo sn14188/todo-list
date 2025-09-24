@@ -1,5 +1,4 @@
 import React from "react";
-// import CheckIcon from "./CheckIcon";
 import Link from "next/link";
 import { Toggle } from "@/components/ui/toggle";
 
@@ -13,9 +12,7 @@ type Props = {
 const CheckListItem = ({ id, name, isCompleted, toggleItem }: Props) => {
   return (
     <li className={`check-list-item ${isCompleted ? "completed" : ""}`}>
-      <button className="check-icon" onClick={() => toggleItem(id)}>
-        <Toggle pressed={isCompleted} />
-      </button>
+      <Toggle pressed={isCompleted} onPressedChange={() => toggleItem(id)} />
       <Link href={`/items/${id}`}>{name}</Link>
     </li>
   );
