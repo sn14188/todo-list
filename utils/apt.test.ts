@@ -61,7 +61,7 @@ describe("test toggleComplete", () => {
     const updatedItem: Item = {
       id: 1,
       tenantId: "tenantId",
-      name: "테스트 항목",
+      name: "위스키 챙겨먹기",
       isCompleted: false,
     };
 
