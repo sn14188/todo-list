@@ -2,9 +2,8 @@
 import { useEffect, useState } from "react";
 import type { Item } from "@/types/item";
 import CheckList from "@/components/CheckList";
-import "@/styles/home.css";
-import "@/styles/button.css";
 import { addItem, fetchItems, toggleComplete } from "@/utils/api";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -47,9 +46,9 @@ export default function Home() {
 
   return (
     <div className="content">
-      <div className="search-add-wrap">
+      <div className="flex items-center justify-center gap-6">
         <input
-          className="search"
+          className="w-full rounded-3xl border-2 border-b-6 border-(--slate-900) bg-(--slate-100) px-5 py-3 text-lg placeholder-(--slate-500)"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="할 일을 입력해주세요"
@@ -60,7 +59,7 @@ export default function Home() {
             }
           }}
         />
-        <button className="button add" type="button" onClick={handleAddItem}>
+        <Button variant="add" onClick={handleAddItem}>
           <svg
             width="16"
             height="16"
@@ -81,8 +80,8 @@ export default function Home() {
               strokeLinecap="round"
             />
           </svg>
-          <span className="add-button-text">추가하기</span>
-        </button>
+          <span className="max-[600px]:hidden">추가하기</span>
+        </Button>
       </div>
 
       <div className="check-lists">
