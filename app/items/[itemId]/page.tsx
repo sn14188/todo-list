@@ -4,9 +4,9 @@ import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import CheckIcon from "@/components/CheckIcon";
 import type { Item } from "@/types/item";
-import "@/styles/home.css";
+// import "@/styles/home.css";
 import "@/styles/item.css";
-import "@/styles/button.css";
+import { Button } from "@/components/ui/button";
 
 const api = process.env.NEXT_PUBLIC_API;
 const tenantId = process.env.NEXT_PUBLIC_TENANT_ID!;
@@ -76,12 +76,6 @@ const ItemPage = () => {
       method: "POST",
       body: formData,
     });
-
-    // if (res.ok) {
-    //   console.log("file uploaded successfully");
-    // } else {
-    //   console.error("error uploading file");
-    // }
 
     const data = await res.json();
     setImageUrl(data.url);
@@ -197,7 +191,7 @@ const ItemPage = () => {
       </div>
 
       <div className="button-wrap">
-        <button className="button save" onClick={handleSave}>
+        <Button variant="save" onClick={handleSave}>
           <svg
             width="16"
             height="16"
@@ -214,8 +208,8 @@ const ItemPage = () => {
             />
           </svg>
           수정 완료
-        </button>
-        <button className="button delete" onClick={handleDelete}>
+        </Button>
+        <Button variant="delete" onClick={handleDelete}>
           <svg
             width="16"
             height="16"
@@ -237,7 +231,7 @@ const ItemPage = () => {
             />
           </svg>
           삭제하기
-        </button>
+        </Button>
       </div>
     </div>
   );
